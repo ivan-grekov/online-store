@@ -1,5 +1,19 @@
 // базовые значения
 
+body{
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+
 .container {
   max-width: 1400px !important;
 }
@@ -8,4 +22,3 @@
   text-decoration: none;
   cursor: pointer;
 }
-
