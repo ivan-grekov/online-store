@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import '../../../assets/scss/main.scss';
 import './style.scss';
+
+import Block from '../../Block/index';
 
 function Main() {
   return (
@@ -9,7 +10,7 @@ function Main() {
       <div className="container">
         <div className="main__wrapper">
           <aside className="aside">
-            <div className="block block__category category">
+            {/* <div className="block block__category category">
               <h3 className="category__title title">Category</h3>
               <ul className="category__list">
                 <li className="category__item">
@@ -33,7 +34,8 @@ function Main() {
                   </a>
                 </li>
               </ul>
-            </div>
+            </div> */}
+            <Block />
           </aside>
           <div className="content"></div>
         </div>
