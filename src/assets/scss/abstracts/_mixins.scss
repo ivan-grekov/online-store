@@ -5,3 +5,7 @@
 @mixin text-basket-amount{
   font-size: 16px;
 }
+@mixin h3-category-title{
+  font-size: 16px;
+  color: $color-text-h3-title
+}
