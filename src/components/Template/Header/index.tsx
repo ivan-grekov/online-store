@@ -18,17 +18,17 @@ function Header() {
           <nav className="navigation">
             <ul className="nav__list">
               <li className="nav__item">
-                <a href="" className="nav__item-link">
+                <a href="" className="link nav__item-link">
                   ShopPage
                 </a>
               </li>
               <li className="nav__item">
-                <a href="" className="nav__item-link">
+                <a href="" className="link nav__item-link">
                   CardPage
                 </a>
               </li>
               <li className="nav__item">
-                <a href="" className="nav__item-link">
+                <a href="" className="link nav__item-link">
                   BasketPage
                 </a>
               </li>
