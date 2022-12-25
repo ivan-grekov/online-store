@@ -1,12 +1,16 @@
 @import '../../../assets/scss/main';
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-  height: 100px;
   background-color: $color-backgraund-header;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100px;
+  }
 }
 
 .logo {
@@ -15,8 +19,8 @@
     height: 100px;
   }
 }
-.navigation {
-}
+// .navigation {
+// }
 .nav {
   // .nav__list
 
@@ -25,6 +29,7 @@
     list-style-type: none;
     gap: 10px;
     align-items: center;
+    margin-bottom: 0rem;
   }
 
   // .nav__item
@@ -34,7 +39,7 @@
 
     &-link {
       @include text-navigation;
-      text-decoration: none;
+
       &:hover {
         color: $color-text-link-hover;
       }
@@ -42,17 +47,28 @@
   }
 }
 .basket {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+  position: relative;
   // .basket__link
-
-  &__link {
-  }
 
   // .basket__icon
 
   &__icon {
+    width: 50px;
+    height: 50px;
   }
-}
-.link {
-}
-.icon {
+  &__amount {
+    display: block;
+    position: absolute;
+    z-index: 2;
+    color: $color-red;
+    top: 18px;
+    left: 34px;
+    font-size: 16px;
+  }
 }

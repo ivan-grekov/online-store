@@ -1,3 +1,7 @@
 @mixin text-navigation {
   color: $color-text-navigation;
 }
+
+@mixin text-basket-amount{
+  font-size: 16px;
+}
