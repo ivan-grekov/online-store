@@ -5,11 +5,14 @@ import AppRouter from './components/AppRouter';
 
 
 import Header from './components/Template/Header/index';
+import Footer from './components/Template/Footer/index';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      {/* <Main /> */}
+      <Footer />
 
     </BrowserRouter>
   );
