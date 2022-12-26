@@ -1,6 +1,17 @@
-@use "./assets/scss/base/_normalize";
+@import "./assets/scss/abstracts/variables";
+@import "./assets/scss/components/buttons";
+@import "./assets/scss/layout/header";
+@import "./assets/scss/layout/main";
+@import "./assets/scss/layout/basket";
+@import "./assets/scss/base/normalize";
 @import "~bootstrap/scss/bootstrap";
 
-// .App {
-//   text-align: center;
-// }
+.container {
+  max-width: 160rem;
+}
+
+body {
+  color: #ffff;
+  background: $bg-dark;
+  font-size: 1.6rem;
+}
