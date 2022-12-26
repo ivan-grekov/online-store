@@ -1,0 +1,29 @@
+import React from "react";
+import logo from "../assets/images/logo-img.png";
+import { Link } from "react-router-dom";
+
+function Header() {
+  return (
+    <header className="header">
+      <div className="container">
+        <Link to="/">
+          <div className="header__logo">
+            <img src={logo} alt="logo image" />
+          </div>
+        </Link>
+        <div className="total-price">
+          <span>Cart total: 280</span>
+        </div>
+        <Link to="/basket">
+          <div className="basket">
+            <div className="basket__total">
+              <span className="basket__total-content"></span>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </header>
+  );
+}
+
+export default Header;
