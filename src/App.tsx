@@ -1,21 +1,25 @@
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import * as React from "react";
 import "./App.scss";
-import AppRouter from "./components/AppRouter";
-import logo from "./assets/images/logo-img.png";
+import Header from "./components/Header";
+import ShopPage from "./pages/ShopPage";
+import ErrorPage from "./pages/ErrorPage";
+import { Routes, Route } from "react-router-dom";
+import BasketPage from "./pages/BasketPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <header>
-        <div>
-          <a className="logo">
-            <img src={logo} alt="logo" />
-          </a>
+    <div className="wrapper">
+      <Header />
+      <main>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<ShopPage />} />
+            <Route path="/basket" element={<BasketPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
         </div>
-        <nav>na</nav>
-      </header>
-    </BrowserRouter>
+      </main>
+    </div>
   );
 }
 
