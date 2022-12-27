@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "../assets/images/logo-img.png";
-import { Link } from "react-router-dom";
+import React from 'react';
+import logo from '../assets/images/logo-img.png';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
@@ -8,7 +8,7 @@ function Header() {
       <div className="container">
         <Link to="/">
           <div className="header__logo">
-            <img src={logo} alt="logo image" />
+            <img src={logo} alt="logo" />
           </div>
         </Link>
         <div className="total-price">
