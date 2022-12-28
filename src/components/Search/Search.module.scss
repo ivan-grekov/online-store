@@ -1,0 +1,15 @@
+@import "../../assets/scss/abstracts/variables";
+
+.root {
+  border: none;
+  padding: 1.1rem 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  background-color: $brand-color;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+
+  &::placeholder {
+    color: white;
+  }
+}
