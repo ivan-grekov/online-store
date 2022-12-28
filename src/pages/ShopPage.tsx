@@ -18,7 +18,7 @@ function ShopPage() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   const [sortType, setSortType] = React.useState({
-    name: "cost",
+    name: "cost (DESC)",
     sortProperty: "price",
   });
 
@@ -26,10 +26,13 @@ function ShopPage() {
 
   React.useEffect(() => {
     setIsLoading(true);
+
+    const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
+
     fetch(
       `https://63a9d76d7d7edb3ae619c28b.mockapi.io/products${
         categoryId ? `?category=${categories[categoryId]}` : "?"
-      }&sortBy=${sortType.sortProperty}&order=asc`
+      }&sortBy=${sortType.sortProperty.replace("-", "")}&order=${order}`
     )
       .then((res) => res.json())
       .then((arr) => {
