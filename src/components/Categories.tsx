@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type CategoriesProps = {
   value: number;
@@ -6,9 +6,9 @@ type CategoriesProps = {
 };
 
 export const categories = [
-  "All",
-  "Electronics",
-  "Jewelery",
+  'All',
+  'Electronics',
+  'Jewelery',
   "Men's",
   "Women's",
 ];
@@ -22,7 +22,7 @@ export const Categories: React.FC<CategoriesProps> = React.memo(
             <li
               key={i}
               onClick={() => onChangeCategory(i)}
-              className={value === i ? "active" : ""}
+              className={value === i ? 'active' : ''}
             >
               {category}
             </li>

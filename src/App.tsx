@@ -1,10 +1,10 @@
-import * as React from "react";
-import "./App.scss";
-import Header from "./components/Header";
-import ShopPage from "./pages/ShopPage";
-import ErrorPage from "./pages/ErrorPage";
-import { Routes, Route } from "react-router-dom";
-import BasketPage from "./pages/BasketPage";
+import * as React from 'react';
+import './App.scss';
+import Header from './components/Header';
+import ShopPage from './pages/ShopPage';
+import ErrorPage from './pages/ErrorPage';
+import { Routes, Route } from 'react-router-dom';
+import BasketPage from './pages/BasketPage';
 
 function App() {
   return (

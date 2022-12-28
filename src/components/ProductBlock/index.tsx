@@ -1,5 +1,5 @@
-import React from "react";
-import { FaStar } from "react-icons/fa";
+import React from 'react';
+import { FaStar } from 'react-icons/fa';
 
 interface ProductBlockProps {
   key: number;
@@ -25,8 +25,8 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
     <div className="product-block">
       <div className="rate">
         <span className="rate-star">
-          {" "}
-          <FaStar style={{ color: "orange" }} />
+          {' '}
+          <FaStar style={{ color: 'orange' }} />
         </span>
         <span>{rating.rate}</span>
       </div>
