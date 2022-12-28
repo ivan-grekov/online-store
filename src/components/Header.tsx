@@ -1,6 +1,7 @@
-import React from 'react';
-import logo from '../assets/images/logo-img.png';
-import { Link } from 'react-router-dom';
+import React from "react";
+import logo from "../assets/images/logo-img.png";
+import { Link } from "react-router-dom";
+import Search from "./Search";
 
 function Header() {
   return (
@@ -11,6 +12,7 @@ function Header() {
             <img src={logo} alt="logo" />
           </div>
         </Link>
+        <Search />
         <div className="total-price">
           <span>Cart total: 280</span>
         </div>
