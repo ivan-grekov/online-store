@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type SortProps = {
   value: { name: string; sortProperty: string };
@@ -7,8 +7,10 @@ type SortProps = {
 
 const listOfSort = [
   // { name: "popularity", sortProperty: "rating.rate" },
-  { name: "cost", sortProperty: "price" },
-  { name: "alphabetically", sortProperty: "title" },
+  { name: 'cost (DESC)', sortProperty: 'price' },
+  { name: 'cost (ASC)', sortProperty: '-price' },
+  { name: 'alphabet (DESC)', sortProperty: 'title' },
+  { name: 'alphabet (ASC)', sortProperty: '-title' },
 ];
 
 const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
@@ -22,7 +24,7 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
     <div className="sort">
       <div className="sort__label">
         <svg
-          className={isVisible ? "icon-sort rotate" : "icon-sort"}
+          className={isVisible ? 'icon-sort rotate' : 'icon-sort'}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -44,7 +46,7 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
               <li
                 key={i}
                 className={
-                  value.sortProperty === sortObj.sortProperty ? "active" : ""
+                  value.sortProperty === sortObj.sortProperty ? 'active' : ''
                 }
                 onClick={() => onClickListItem(sortObj)}
               >

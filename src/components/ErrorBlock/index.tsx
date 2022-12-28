@@ -1,5 +1,5 @@
-import * as React from "react";
-import styles from "./ErrorBlock.module.scss";
+import * as React from 'react';
+import styles from './ErrorBlock.module.scss';
 
 function ErrorBlock() {
   return (
