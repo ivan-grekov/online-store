@@ -7,8 +7,10 @@ type SortProps = {
 
 const listOfSort = [
   // { name: "popularity", sortProperty: "rating.rate" },
-  { name: "cost", sortProperty: "price" },
-  { name: "alphabetically", sortProperty: "title" },
+  { name: "cost (DESC)", sortProperty: "price" },
+  { name: "cost (ASC)", sortProperty: "-price" },
+  { name: "alphabet (DESC)", sortProperty: "title" },
+  { name: "alphabet (ASC)", sortProperty: "-title" },
 ];
 
 const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
