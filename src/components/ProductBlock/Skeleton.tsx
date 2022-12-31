@@ -1,5 +1,6 @@
 import React from 'react';
 import ContentLoader from 'react-content-loader';
+import '../../assets/scss/main.scss';
 
 const Skeleton = () => (
   <ContentLoader
