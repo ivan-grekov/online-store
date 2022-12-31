@@ -4,11 +4,11 @@ import Categories from '../components/Categories';
 import Skeleton from '../components/ProductBlock/Skeleton';
 import ProductBlock from '../components/ProductBlock';
 import { IData } from '../types';
-import { SearchContext } from './../App';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { setCategoryId } from '../redux/slices/filterSlice';
-import { setSortType } from '../redux/slices/filterSlice';
+import axios from 'axios';
+
 const categories = [
   'All',
   'Electronics',
@@ -19,9 +19,9 @@ const categories = [
 
 const ShopPage = () => {
   const dispatch = useDispatch();
-  const { categoryId, sort } = useSelector((state: RootState) => state.filter);
-
-  const { searchValue } = React.useContext(SearchContext);
+  const { categoryId, sort, searchValue } = useSelector(
+    (state: RootState) => state.filter
+  );
 
   const [products, setProducts] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -32,16 +32,17 @@ const ShopPage = () => {
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    fetch(
-      `https://63a9d76d7d7edb3ae619c28b.mockapi.io/products${
-        categoryId ? `?category=${categories[categoryId]}` : '?'
-      }&sortBy=${sort.sortProperty.replace('-', '')}&order=${order}${search}`
-    )
-      .then((res) => res.json())
-      .then((arr) => {
-        setProducts(arr);
+    axios
+      .get(
+        `https://63a9d76d7d7edb3ae619c28b.mockapi.io/products${
+          categoryId ? `?category=${categories[categoryId]}` : '?'
+        }&sortBy=${sort.sortProperty.replace('-', '')}&order=${order}${search}`
+      )
+      .then((res) => {
+        setProducts(res.data);
         setIsLoading(false);
       });
+    window.scrollTo(0, 0);
   }, [categoryId, sort.sortProperty, searchValue]);
 
   const prod = products.map((product: IData) => (
