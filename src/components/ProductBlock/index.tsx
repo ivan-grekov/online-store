@@ -7,10 +7,8 @@ interface ProductBlockProps {
   title: string;
   price: number;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  rate: number;
+  count: number;
 }
 
 const ProductBlock: React.FC<ProductBlockProps> = ({
@@ -18,7 +16,8 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
   title,
   price,
   image,
-  rating,
+  rate,
+  count,
 }) => {
   const [productCount, setProductCount] = React.useState(0);
   return (
@@ -28,7 +27,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
           {' '}
           <FaStar style={{ color: 'orange' }} />
         </span>
-        <span>{rating.rate}</span>
+        <span>{rate}</span>
       </div>
       <img className="product-block__image" src={image} alt="image" />
       <h4 className="product-block__title">{title}</h4>
