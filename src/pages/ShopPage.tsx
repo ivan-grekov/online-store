@@ -1,13 +1,15 @@
 import * as React from 'react';
-import CardSort from '../components/CardSort';
+import CardSort, { listOfSort } from '../components/CardSort';
 import Categories from '../components/Categories';
 import Skeleton from '../components/ProductBlock/Skeleton';
 import ProductBlock from '../components/ProductBlock';
 import { IData } from '../types';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { setCategoryId } from '../redux/slices/filterSlice';
+import { setCategoryId, setFilters } from '../redux/slices/filterSlice';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import qs from 'qs';
 
 const categories = [
   'All',
@@ -19,16 +21,33 @@ const categories = [
 
 const ShopPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { categoryId, sort, searchValue } = useSelector(
     (state: RootState) => state.filter
   );
 
   const [products, setProducts] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const isMounted = React.useRef(false);
+
+  React.useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      const sort = listOfSort.find(
+        (obj) => obj.sortProperty === params.sortProperty
+      );
+
+      dispatch(
+        setFilters({
+          ...params,
+          sort,
+        })
+      );
+    }
+  }, []);
 
   React.useEffect(() => {
     setIsLoading(true);
-
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
     const search = searchValue ? `&search=${searchValue}` : '';
 
@@ -45,7 +64,20 @@ const ShopPage = () => {
     window.scrollTo(0, 0);
   }, [categoryId, sort.sortProperty, searchValue]);
 
-  const prod = products.map((product: IData) => (
+  // Create query string with params for navigate
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        sortProperty: sort.sortProperty,
+        categoryId,
+      });
+
+      navigate(`?${queryString}`);
+    }
+    isMounted.current = true;
+  }, [categoryId, sort.sortProperty, searchValue]);
+
+  const prods = products.map((product: IData) => (
     <ProductBlock {...product} key={product.id} />
   ));
 
@@ -63,7 +95,7 @@ const ShopPage = () => {
         <div className="section-shop__items">
           {isLoading
             ? [...new Array(4)].map((_, i) => <Skeleton key={i} />)
-            : prod}
+            : prods}
         </div>
       </section>
     </>
