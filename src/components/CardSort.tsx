@@ -1,25 +1,28 @@
 import React from 'react';
-
-type SortProps = {
-  value: { name: string; sortProperty: string };
-  onChangeSort: (obj: { name: string; sortProperty: string }) => void;
-};
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store';
+import { setSortType } from '../redux/slices/filterSlice';
 
 const listOfSort = [
-  // { name: "popularity", sortProperty: "rating.rate" },
+  { name: 'popular (DESC)', sortProperty: 'rate' },
+  { name: 'popular (ASC)', sortProperty: '-rate' },
   { name: 'cost (DESC)', sortProperty: 'price' },
   { name: 'cost (ASC)', sortProperty: '-price' },
   { name: 'alphabet (DESC)', sortProperty: 'title' },
   { name: 'alphabet (ASC)', sortProperty: '-title' },
 ];
 
-const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
+function CardSort() {
+  const dispatch = useDispatch();
+  const sort = useSelector((state: RootState) => state.filter.sort);
+
   const [isVisible, setIsVisible] = React.useState(false);
 
   const onClickListItem = (obj: { name: string; sortProperty: string }) => {
-    onChangeSort(obj);
+    dispatch(setSortType(obj));
     setIsVisible(false);
   };
+
   return (
     <div className="sort">
       <div className="sort__label">
@@ -37,7 +40,7 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
           />
         </svg>
         <b>Sorting by:</b>
-        <span onClick={() => setIsVisible(!isVisible)}>{value.name}</span>
+        <span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
       </div>
       {isVisible && (
         <div className="sort__popup">
@@ -46,7 +49,7 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
               <li
                 key={i}
                 className={
-                  value.sortProperty === sortObj.sortProperty ? 'active' : ''
+                  sort.sortProperty === sortObj.sortProperty ? 'active' : ''
                 }
                 onClick={() => onClickListItem(sortObj)}
               >
@@ -58,6 +61,6 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
       )}
     </div>
   );
-});
+}
 
 export default CardSort;
