@@ -31,10 +31,14 @@ export const filterSlice = createSlice({
     setSearchValue(state, action) {
       state.searchValue = action.payload;
     },
+    setFilters(state, action) {
+      state.sort = action.payload;
+      state.categoryId = Number(action.payload.categoryId);
+    },
   },
 });
 
-export const { setCategoryId, setSortType, setSearchValue } =
+export const { setCategoryId, setSortType, setSearchValue, setFilters } =
   filterSlice.actions;
 
 export default filterSlice.reducer;
