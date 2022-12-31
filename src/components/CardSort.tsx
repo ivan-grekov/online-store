@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { setSortType } from '../redux/slices/filterSlice';
 
-const listOfSort = [
+export const listOfSort = [
   { name: 'popular (DESC)', sortProperty: 'rate' },
   { name: 'popular (ASC)', sortProperty: '-rate' },
   { name: 'cost (DESC)', sortProperty: 'price' },
