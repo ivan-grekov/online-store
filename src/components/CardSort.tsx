@@ -3,6 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { setSortType } from '../redux/slices/filterSlice';
 
+interface ISortArray {
+  name?: string;
+  sortProperty: string;
+  categoryId?: string;
+  sort?: {
+    name: string;
+    sortProperty: string;
+  };
+}
+
 export const listOfSort = [
   { name: 'popular (DESC)', sortProperty: 'rate' },
   { name: 'popular (ASC)', sortProperty: '-rate' },
@@ -15,6 +25,9 @@ export const listOfSort = [
 function CardSort() {
   const dispatch = useDispatch();
   const sort = useSelector((state: RootState) => state.filter.sort);
+
+  const getSortName = (sortArr: ISortArray) =>
+    sortArr.hasOwnProperty('name') ? sortArr['name'] : sortArr['sort']?.name;
 
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -40,7 +53,9 @@ function CardSort() {
           />
         </svg>
         <b>Sorting by:</b>
-        <span onClick={() => setIsVisible(!isVisible)}>{sort.name}</span>
+        <span onClick={() => setIsVisible(!isVisible)}>
+          {getSortName(sort)}
+        </span>
       </div>
       {isVisible && (
         <div className="sort__popup">
