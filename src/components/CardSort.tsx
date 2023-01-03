@@ -1,27 +1,62 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store';
+import { setSortType } from '../redux/slices/filterSlice';
 
-type SortProps = {
-  value: { name: string; sortProperty: string };
-  onChangeSort: (obj: { name: string; sortProperty: string }) => void;
+interface ISortArray {
+  name?: string;
+  sortProperty: string;
+  categoryId?: string;
+  sort?: {
+    name: string;
+    sortProperty: string;
+  };
+}
+
+type PopupClick = MouseEvent & {
+  path: Node[];
 };
 
-const listOfSort = [
-  // { name: "popularity", sortProperty: "rating.rate" },
+export const listOfSort = [
+  { name: 'popular (DESC)', sortProperty: 'rate' },
+  { name: 'popular (ASC)', sortProperty: '-rate' },
   { name: 'cost (DESC)', sortProperty: 'price' },
   { name: 'cost (ASC)', sortProperty: '-price' },
   { name: 'alphabet (DESC)', sortProperty: 'title' },
   { name: 'alphabet (ASC)', sortProperty: '-title' },
 ];
 
-const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
+function CardSort() {
+  const dispatch = useDispatch();
+  const sort = useSelector((state: RootState) => state.filter.sort);
+  const sortRef = React.useRef<HTMLDivElement>(null);
+
+  const getSortName = (sortArr: ISortArray) =>
+    sortArr.hasOwnProperty('name') ? sortArr['name'] : sortArr['sort']?.name;
+
   const [isVisible, setIsVisible] = React.useState(false);
 
   const onClickListItem = (obj: { name: string; sortProperty: string }) => {
-    onChangeSort(obj);
+    dispatch(setSortType(obj));
     setIsVisible(false);
   };
+
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const _event = event as PopupClick;
+
+      if (sortRef.current && !_event.path.includes(sortRef.current)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           className={isVisible ? 'icon-sort rotate' : 'icon-sort'}
@@ -37,7 +72,9 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
           />
         </svg>
         <b>Sorting by:</b>
-        <span onClick={() => setIsVisible(!isVisible)}>{value.name}</span>
+        <span onClick={() => setIsVisible(!isVisible)}>
+          {getSortName(sort)}
+        </span>
       </div>
       {isVisible && (
         <div className="sort__popup">
@@ -46,7 +83,7 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
               <li
                 key={i}
                 className={
-                  value.sortProperty === sortObj.sortProperty ? 'active' : ''
+                  sort.sortProperty === sortObj.sortProperty ? 'active' : ''
                 }
                 onClick={() => onClickListItem(sortObj)}
               >
@@ -58,6 +95,6 @@ const CardSort: React.FC<SortProps> = React.memo(({ value, onChangeSort }) => {
       )}
     </div>
   );
-});
+}
 
 export default CardSort;

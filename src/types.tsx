@@ -3,11 +3,9 @@ export interface IData {
   id: number;
   title: string;
   price: number;
-  description: number;
+  description: string;
   category: string;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  rate: number;
+  count: number;
 }
