@@ -24,7 +24,7 @@ const basketSlice = createSlice({
       state.totalPrice = calcTotalPrice(state.items);
     },
 
-    minusItem(state, action: PayloadAction<string>) {
+    minusItem(state, action: PayloadAction<number>) {
       const findItem = state.items.find((obj) => obj.id === action.payload);
 
       if (findItem) {
@@ -34,7 +34,7 @@ const basketSlice = createSlice({
       state.totalPrice = calcTotalPrice(state.items);
     },
 
-    removeItem(state, action: PayloadAction<string>) {
+    removeItem(state, action: PayloadAction<number>) {
       state.items = state.items.filter((obj) => obj.id !== action.payload);
       state.totalPrice = calcTotalPrice(state.items);
     },

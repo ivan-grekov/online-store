@@ -1,10 +1,9 @@
 export type BasketItem = {
-  id: string;
+  id: number;
   title: string;
+  description: string;
   price: number;
-  imageUrl: string;
-  type: string;
-  size: number;
+  image: string;
   count: number;
 };
 

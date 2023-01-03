@@ -1,6 +1,6 @@
 import { RootState } from '../store';
 
-export const selectCart = (state: RootState) => state.basket;
+export const selectBasket = (state: RootState) => state.basket;
 
-export const selectCartItemById = (id: string) => (state: RootState) =>
+export const selectBasketItemById = (id: number) => (state: RootState) =>
   state.basket.items.find((obj) => obj.id === id);
