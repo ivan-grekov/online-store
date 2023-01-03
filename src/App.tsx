@@ -5,6 +5,7 @@ import ShopPage from './pages/ShopPage';
 import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
 import BasketPage from './pages/BasketPage';
+import CardPage from './pages/CardPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<ShopPage />} />
             <Route path="/basket" element={<BasketPage />} />
+            <Route path="/card" element={<CardPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
