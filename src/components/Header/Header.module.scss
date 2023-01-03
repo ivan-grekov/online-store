@@ -5,18 +5,22 @@
   background: $bg-global;
 
 
-  &__container {
-    max-width: 160rem;
+
+}
+
+  .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
   }
-}
 
 .basket {
   width: 4.8rem;
   height: 4.8rem;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
   position: relative;
   z-index: 1;
   display: flex;
@@ -43,7 +47,7 @@
   border-radius: 50%;
 }
 
-.basket__total-content {
+.basket__total_content {
   position: absolute;
   font-size: 1.9rem;
   color: white;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Header.module.scss'
+import styles from './Header.module.scss';
 import logo from '../../assets/images/logo-img.png';
 import { Link } from 'react-router-dom';
 import Search from '../Search';
@@ -36,8 +36,8 @@ export const Header: React.FC = () => {
         </div>
         <Link to="/basket">
           <div className={styles.basket}>
-            <div className="basket__total">
-              <span className="basket__total-content">{totalCount}</span>
+            <div className={styles.basket__total}>
+              <span className={styles.basket__total_content}>{totalCount}</span>
             </div>
           </div>
         </Link>
