@@ -1,21 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import cartEmptyImg from '../assets/images/empty-basket.png';
+import basketEmptyImg from '../assets/images/empty-basket.png';
 
-export const CartEmpty: React.FC = () => (
+export const BasketEmpty: React.FC = () => (
   <div className="cart cart--empty">
     <h2>
-      Корзина пустая <span>😕</span>
+      Basket is empty <span>😕</span>
     </h2>
     <p>
-      Вероятней всего, вы не заказывали ещё пиццу.
+      Most likely, you haven't ordered products yet.
       <br />
-      Для того, чтобы заказать пиццу, перейди на главную страницу.
+      To order a product, go to the main page.
     </p>
-    <img src={cartEmptyImg} alt="Empty cart" />
+    <img src={basketEmptyImg} alt="Empty cart" />
     <Link to="/" className="button button--black">
-      <span>Вернуться назад</span>
+      <span>Come back</span>
     </Link>
   </div>
 );

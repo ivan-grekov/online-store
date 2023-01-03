@@ -1,26 +1,24 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addItem, minusItem, removeItem } from '../redux/basket/slice';
-import { BasketItem as CartItemType } from '../redux/basket/types';
+import { BasketItem as BasketItemType } from '../redux/basket/types';
 
-type CartItemProps = {
-  id: string;
+type BasketItemProps = {
+  id: number;
   title: string;
-  type: string;
-  size: number;
+  description: string;
   price: number;
   count: number;
-  imageUrl: string;
+  image: string;
 };
 
-export const CartItem: React.FC<CartItemProps> = ({
+export const BasketItem: React.FC<BasketItemProps> = ({
   id,
   title,
-  type,
-  size,
+  description,
   price,
   count,
-  imageUrl,
+  image,
 }) => {
   const dispatch = useDispatch();
 
@@ -28,7 +26,7 @@ export const CartItem: React.FC<CartItemProps> = ({
     dispatch(
       addItem({
         id,
-      } as CartItemType)
+      } as BasketItemType)
     );
   };
 
@@ -37,7 +35,7 @@ export const CartItem: React.FC<CartItemProps> = ({
   };
 
   const onClickRemove = () => {
-    if (window.confirm('Ты действительно хочешь удалить товар?')) {
+    if (window.confirm('Do you really want to delete the product?')) {
       dispatch(removeItem(id));
     }
   };
@@ -45,13 +43,11 @@ export const CartItem: React.FC<CartItemProps> = ({
   return (
     <div className="cart__item">
       <div className="cart__item-img">
-        <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
+        <img className="pizza-block__image" src={image} alt="Pizza" />
       </div>
       <div className="cart__item-info">
         <h3>{title}</h3>
-        <p>
-          {type}, {size} см.
-        </p>
+        <p>{description}</p>
       </div>
       <div className="cart__item-count">
         <button
@@ -100,7 +96,7 @@ export const CartItem: React.FC<CartItemProps> = ({
         </button>
       </div>
       <div className="cart__item-price">
-        <b>{price * count} ₽</b>
+        <b>{price * count} $</b>
       </div>
       <div className="cart__item-remove">
         <div
