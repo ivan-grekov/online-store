@@ -6,10 +6,10 @@ import ProductBlock from '../components/ProductBlock';
 import { IData } from '../types';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { setCategoryId, setFilters } from '../redux/slices/filterSlice';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import qs from 'qs';
+import { setFilters, setCategoryId } from '../redux/slices/filterSlice';
 
 const categories = [
   'All',
@@ -19,7 +19,7 @@ const categories = [
   "Women's clothing",
 ];
 
-const ShopPage = () => {
+const ShopPage: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { categoryId, sort, searchValue } = useSelector(
