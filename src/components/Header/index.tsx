@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Header.module.scss'
+import styles from './Header.module.scss';
 import logo from '../../assets/images/logo-img.png';
 import { Link } from 'react-router-dom';
 import Search from '../Search';
