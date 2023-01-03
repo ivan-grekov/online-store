@@ -13,6 +13,10 @@ interface ISortArray {
   };
 }
 
+type PopupClick = MouseEvent & {
+  path: Node[];
+};
+
 export const listOfSort = [
   { name: 'popular (DESC)', sortProperty: 'rate' },
   { name: 'popular (ASC)', sortProperty: '-rate' },
@@ -25,6 +29,7 @@ export const listOfSort = [
 function CardSort() {
   const dispatch = useDispatch();
   const sort = useSelector((state: RootState) => state.filter.sort);
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
   const getSortName = (sortArr: ISortArray) =>
     sortArr.hasOwnProperty('name') ? sortArr['name'] : sortArr['sort']?.name;
@@ -36,8 +41,22 @@ function CardSort() {
     setIsVisible(false);
   };
 
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const _event = event as PopupClick;
+
+      if (sortRef.current && !_event.path.includes(sortRef.current)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.body.addEventListener('click', handleClickOutside);
+
+    return () => document.body.removeEventListener('click', handleClickOutside);
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           className={isVisible ? 'icon-sort rotate' : 'icon-sort'}
