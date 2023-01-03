@@ -1,9 +1,14 @@
 .body {
   color: $color-white;
   background: $bg-global;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .container {
   max-width: 160rem;
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
 }
