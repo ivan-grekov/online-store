@@ -51,7 +51,7 @@ export const ProductBlock: React.FC<ProductBlockProps> = ({
         <span>{rate}</span>
       </div>
       <Link key={id} to={`/product/${id}`}>
-        <img className="product-block__image" src={image} alt="image" />
+        <img className="product-block__image" src={image} alt="card" />
         <h4 className="product-block__title">{title}</h4>
       </Link>
       <div className="product-block__bottom">
