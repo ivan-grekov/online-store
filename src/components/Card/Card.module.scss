@@ -1,0 +1,76 @@
+@import '../../assets/scss/main';
+
+.wrapper{
+  background: linear-gradient(175.31deg, #545466 9.62%, rgba(84, 84, 102, 0.3) 93.87%);
+  border-radius: 2rem;
+  padding: 4rem 2rem;
+}
+
+.cards {
+
+		// .cards__block
+
+		&__block {
+      display: flex;
+      flex-direction: row-reverse;
+      // gap: 50px;
+      // margin: 0px 0px 0px 0px;
+
+		}
+
+		// .cards__name
+
+		&__name {
+        font-size: 2.0em;
+        font-weight: bold;
+        margin: 0px 0px 50px 0px;
+        width: 50%;
+        text-align: justify;
+		}
+
+		// .cards__img
+
+		&__img {
+      max-width: 50%;
+      height: 100%;
+      background-size: cover;
+
+		}
+
+		// .cards__discription
+
+		&__discription {
+
+      display: flex;
+      flex-direction: column;
+      text-align: justify;
+      justify-content: space-between;
+      margin: 0px 50px 0px 0px;
+            //.card;
+		}
+}
+.block {
+
+		// .product-block__bottom
+
+		&__bottom {
+      margin: 20px 0px 0px 0px;
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      justify-content: center;
+		}
+
+		// .product-block__price
+
+		&__price {
+      // mm
+		}
+}
+.button {
+}
+.button--outline {
+}
+.button--add {
+}
+
