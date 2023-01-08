@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.scss';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import ShopPage from './pages/ShopPage';
 import ErrorPage from './pages/ErrorPage';
 import { Routes, Route } from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
           </Routes>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
