@@ -11,6 +11,26 @@ main .container {
   flex-basis: 70%;
 }
 
+.shop-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dispay-config {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.config-item {
+  border: 1px solid $brand-color;
+  border-radius: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
 .categories {
   ul {
     display: flex;
@@ -144,9 +164,14 @@ main .container {
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
   // @media (max-width: 880px) {
   //   grid-template-columns: 1fr;
   // }
+
+  &.grid-2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .product-block {
@@ -189,4 +214,134 @@ main .container {
 
 .filters-block {
   padding-right: 1rem;
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  cursor: pointer;
+
+  &__content {
+    padding: 2rem;
+    border-radius: 1.4rem;
+    background-color: $brand-color;
+    transform: scale(0.5);
+    transition: all 0.4s;
+    width: 40vw;
+    cursor: default;
+  }
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal__content.active {
+  transform: scale(1);
+}
+
+.pay-form {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-input {
+  background-color: white;
+  width: 100%;
+  border: 1px solid orange;
+  color: orange;
+  border-radius: 2rem;
+  padding: 0.4rem;
+  outline: none;
+  font-size: 90%;
+  text-align: center;
+  margin: 2% auto;
+  color: black;
+}
+
+.pay-form .subtitle {
+  text-align: center;
+}
+
+.form-block {
+  width: 50%;
+}
+
+.card-logo {
+  background-color: #fff;
+  width: 8%;
+  border-radius: 0.3rem;
+  padding: 0.3rem;
+}
+
+.card-details {
+  width: 100%;
+}
+
+.card-data {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid orange;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  background: rgb(0, 9, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 9, 36) 6%,
+    rgb(9, 9, 121) 34%,
+    rgb(0, 212, 255) 100%
+  );
+  width: 55%;
+}
+
+.number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 7% auto 10%;
+}
+
+.number input {
+  width: 80%;
+}
+
+.other-data {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.input-valid {
+  width: 50%;
+}
+
+.data-block {
+  display: flex;
+  gap: 1rem;
+}
+
+.button.pay-btn.btn-confirm {
+  border: 1px solid orange;
 }
