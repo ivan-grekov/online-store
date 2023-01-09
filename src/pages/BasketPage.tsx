@@ -8,10 +8,12 @@ import { BasketItem } from '../components/BasketItem';
 import { BasketEmpty } from '../components/BasketEmpty';
 import { selectBasket } from '../redux/basket/selectors';
 import { clearItems } from '../redux/basket/slice';
+import Modal from '../components/Modal/index';
 
 const BasketPage: React.FC = () => {
   const dispatch = useDispatch();
   const { totalPrice, items } = useSelector(selectBasket);
+  const [modalActive, setModalActive] = React.useState(false);
 
   const totalCount = items.reduce(
     (sum: number, item: any) => sum + item.count,
@@ -32,10 +34,10 @@ const BasketPage: React.FC = () => {
     <div className="container container--cart">
       <div className="cart">
         <div className="cart__top">
-          <img src={BasketImg} alt="basket image" />
+          <img src={BasketImg} alt="basket" />
           <h2 className="content__title">Basket</h2>
           <div onClick={onClickClear} className="cart__clear">
-            <img src={BasketClearImg} alt="basket-clear image" />
+            <img src={BasketClearImg} alt="basket-clear" />
             <span>Clear basket</span>
           </div>
         </div>
@@ -63,12 +65,16 @@ const BasketPage: React.FC = () => {
               <img src={ButtonBack} alt="button back symbol" />
               <span>Come back</span>
             </Link>
-            <div className="button pay-btn">
+            <button
+              className="button pay-btn"
+              onClick={() => setModalActive(true)}
+            >
               <span>Pay now</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
+      <Modal active={modalActive} setActive={setModalActive} />
     </div>
   );
 };

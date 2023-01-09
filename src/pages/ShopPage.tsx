@@ -27,7 +27,11 @@ const ShopPage: React.FC = () => {
   );
 
   const [products, setProducts] = React.useState([]);
+  const [activeDisplayConfig, setDisplayConfig] = React.useState(
+    'section-shop__items grid-4-cols active-config'
+  );
   const [isLoading, setIsLoading] = React.useState(true);
+  const itemsBlock = React.useRef<HTMLDivElement>(null);
   const isMounted = React.useRef(false);
 
   React.useEffect(() => {
@@ -91,8 +95,30 @@ const ShopPage: React.FC = () => {
           value={categoryId}
           onChangeCategory={(id) => dispatch(setCategoryId(id))}
         />
-        <h2 className="section-shop__title">{categories[categoryId]}</h2>
-        <div className="section-shop__items">
+        <div className="shop-info">
+          <h2 className="section-shop__title">{categories[categoryId]}</h2>
+          <div className="dispay-config">
+            <span
+              onClick={() =>
+                setDisplayConfig('section-shop__items grid-2-cols')
+              }
+              className="config-item"
+            >
+              2 x 10
+            </span>
+            <span
+              onClick={() =>
+                setDisplayConfig(
+                  'section-shop__items grid-4-cols active-config'
+                )
+              }
+              className="config-item"
+            >
+              4 x 5
+            </span>
+          </div>
+        </div>
+        <div ref={itemsBlock} className={activeDisplayConfig}>
           {isLoading
             ? [...new Array(4)].map((_, i) => <Skeleton key={i} />)
             : prods}

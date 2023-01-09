@@ -1,76 +1,79 @@
 @import '../../assets/scss/main';
 
-.wrapper{
-  background: linear-gradient(175.31deg, #545466 9.62%, rgba(84, 84, 102, 0.3) 93.87%);
+.wrapper {
+  background: linear-gradient(
+    175.31deg,
+    #545466 9.62%,
+    rgba(84, 84, 102, 0.3) 93.87%
+  );
   border-radius: 2rem;
-  padding: 4rem 2rem;
+  padding: 4rem 4rem;
 }
 
 .cards {
+  // .cards__block
 
-		// .cards__block
+  &__block {
+    display: flex;
+    flex-direction: row-reverse;
+    // gap: 50px;
+    // margin: 0px 0px 0px 0px;
+  }
 
-		&__block {
-      display: flex;
-      flex-direction: row-reverse;
-      // gap: 50px;
-      // margin: 0px 0px 0px 0px;
+  // .cards__name
 
-		}
+  &__name {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0px 0px 50px 0px;
+    width: 50%;
+    text-align: justify;
+  }
 
-		// .cards__name
+  &__imgBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 
-		&__name {
-        font-size: 2.0em;
-        font-weight: bold;
-        margin: 0px 0px 50px 0px;
-        width: 50%;
-        text-align: justify;
-		}
+  // .cards__img
 
-		// .cards__img
+  &__img {
+    max-width: 100%;
+    height: 80%;
+    background-size: cover;
+  }
 
-		&__img {
-      max-width: 50%;
-      height: 100%;
-      background-size: cover;
+  // .cards__discription
 
-		}
+  &__discription {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    justify-content: center;
+    margin: 0px 50px 0px 0px;
+    flex-basis: 70%;
 
-		// .cards__discription
+    p {
+      font-size: 2.8rem;
+    }
+  }
+  .block {
+    // .product-block__bottom
 
-		&__discription {
-
-      display: flex;
-      flex-direction: column;
-      text-align: justify;
-      justify-content: space-between;
-      margin: 0px 50px 0px 0px;
-            //.card;
-		}
-}
-.block {
-
-		// .product-block__bottom
-
-		&__bottom {
-      margin: 20px 0px 0px 0px;
+    &__bottom {
+      margin: 50px 0px 0px 0px;
       display: flex;
       flex-direction: row;
       gap: 50px;
-      justify-content: center;
-		}
+      align-self: flex-start;
+    }
 
-		// .product-block__price
+    // .product-block__price
 
-		&__price {
-      // mm
-		}
+    &__price {
+      font-size: 2.8rem;
+    }
+  }
 }
-.button {
-}
-.button--outline {
-}
-.button--add {
-}
-
