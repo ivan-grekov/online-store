@@ -2,8 +2,6 @@
 
 @import './base/normalize', './base/typography', './base/base';
 
-@import // './layout/header',
-  './layout/main',
-  './layout/basket';
+@import './layout/main', './layout/basket';
 
 @import './components/buttons';
