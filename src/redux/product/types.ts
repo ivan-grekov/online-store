@@ -13,12 +13,12 @@ export enum Status {
   ERROR = 'error',
 }
 
-export type SearchProductParams = {
+export interface SearchProductParams {
   sortBy: string;
   order: string;
   category: string;
   search: string;
-};
+}
 
 export interface ProductSliceState {
   items: Product[];
