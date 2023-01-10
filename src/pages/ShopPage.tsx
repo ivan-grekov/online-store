@@ -10,14 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import qs from 'qs';
 import { setFilters, setCategoryId } from '../redux/slices/filterSlice';
-
-const categories = [
-  'All',
-  'Electronics',
-  'Jewelery',
-  "Men's clothing",
-  "Women's clothing",
-];
+import { categories } from '../components/Categories';
 
 const ShopPage: React.FC = () => {
   const dispatch = useDispatch();
