@@ -1,0 +1,35 @@
+// @import "../../assets/scss/abstracts/variables";
+@import '../../assets/scss/main';
+
+.root {
+  position: relative;
+}
+
+.input {
+  border: none;
+  padding: 1.1rem 1.5rem;
+  padding-left: 3.5rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  background-color: $brand-color;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 1rem;
+
+  &::placeholder {
+    color: white;
+  }
+
+  &:focus {
+    border: 1px solid $brand-color;
+    outline: none;
+  }
+}
+
+.search__icon {
+  position: absolute;
+  left: 1.5rem;
+  top: 1rem;
+  font-size: 2rem;
+  opacity: 0.2;
+}
