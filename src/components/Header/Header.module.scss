@@ -3,17 +3,14 @@
 .header {
   padding: 4rem 0 6rem 0;
   background: $bg-global;
-
-
-
 }
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-  }
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
 
 .basket {
   width: 4.8rem;
