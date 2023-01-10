@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux';
 import { addItem, minusItem, removeItem } from '../redux/basket/slice';
 import { BasketItem as BasketItemType } from '../redux/basket/types';
 
-type BasketItemProps = {
+interface BasketItemProps {
   id: number;
   title: string;
   description: string;
   price: number;
   count: number;
   image: string;
-};
+}
 
 export const BasketItem: React.FC<BasketItemProps> = ({
   id,
